@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { VscSearch } from 'react-icons/vsc'
 import styled from 'styled-components'
 
@@ -32,16 +32,34 @@ const StyledInput = styled.input`
   border: none;
   outline: none;
   transition: .2s;
-
+  
   :focus {
     box-shadow: 0 1px 5px -4px black;
   }
 `
 
-export default function SearchInput() {
+export default function SearchInput({ value, onValue }) {
+  
+  const [ insideValue, setInsideValue ] = useState(value)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      onValue?.(insideValue)
+    }, [250])
+    return () => clearTimeout(timeout)
+  }, [insideValue, onValue])
+
+  const handleChange = (e) => {
+    setInsideValue(e.target.value)
+  }
+
   return (
     <Container>
-      <StyledInput placeholder="Search book"/>
+      <StyledInput 
+        placeholder="Search book"
+        value={insideValue}
+        onChange={handleChange}
+      />
       <Icon>
         <VscSearch/>
       </Icon>
