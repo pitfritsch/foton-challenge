@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
+import BooksList from '../../components/books/BooksList'
 import Footer from '../../components/Footer'
 import SearchInput from '../../components/SearchInput'
 import { getBooks } from '../../services/books'
@@ -38,11 +39,7 @@ export default function HomePage() {
           onValue={setSearch}
         />
 
-        {books.map(book => 
-          <p key={book.id}>
-            <a href={book.selfLink} target='_blank'>{book.volumeInfo.title}</a>
-          </p>
-        )}
+        <BooksList books={books} />
 
       </Content>
       <Footer/>
