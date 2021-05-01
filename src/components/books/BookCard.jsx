@@ -1,17 +1,35 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import notFound from '../../images/not_found.jpg'
+
+const ellipsis = css`
+  @supports not (-webkit-line-clamp: 2){
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  @supports(-webkit-line-clamp: 2){
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+  }
+`
 
 const ImageContainer = styled.div`
   position: relative;
   width: 100%;
-`
-
-const Image = styled.img`
+  padding-top: 150%;
+  background-image: url(${notFound});
+  background-size: cover;
+  background-position: center;
   border-radius: 5px;
-  box-shadow: 0px 2px 5px -3px black;
-`
+  box-shadow: 0px 2px 5px -4px black;
 
-const InfosContainer = styled.div`
+  ${p => p.src && css`
+    background-image: url(${p.src});
+  `}
 `
 
 const Title = styled.p`
@@ -19,6 +37,8 @@ const Title = styled.p`
   font-weight: 700;
   color: rgba(49, 49, 49, 0.8);
   margin: 9px 0 0 0;
+
+  ${ellipsis}
 `
 
 const Author = styled.p`
@@ -26,16 +46,15 @@ const Author = styled.p`
   font-weight: 900;
   color: rgba(49, 49, 49, 0.8);
   margin: 5px 0 0 0;
+  
+  ${ellipsis}
 `
 
 export default function BookCard({ book, ...rest }) {
-  console.log({ book })
 
   return (
     <div>
-      <ImageContainer>
-        <Image src={book?.volumeInfo?.imageLinks?.thumbnail} width='100%' alt='oi' />
-      </ImageContainer>
+      <ImageContainer src={book?.volumeInfo?.imageLinks?.thumbnail}/>
       <Title>
         {book?.volumeInfo?.title}
       </Title>

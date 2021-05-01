@@ -4,9 +4,9 @@ import BookCard from './BookCard'
 
 const ListContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, var(--grid-width));
   grid-gap: 15px;
-  margin-top: 40px;
+  margin: 40px 0 30px 0;
 `
 
 export default function BooksList({ books=[] }) {
