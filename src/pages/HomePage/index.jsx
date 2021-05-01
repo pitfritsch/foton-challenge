@@ -9,23 +9,53 @@ const Page = styled.div`
 `
 
 const Content = styled.div`
+  display: flex;
+  flex-direction: column;
   position: relative;
-  padding: 20px;
+  padding: 20px 20px 80px 20px;
+`
+
+const LoadButton = styled.button`
+  margin: auto;
 `
 
 export default function HomePage() {
 
-  const [ search, setSearch ] = useState('')
+  const [ loading, setLoading ] = useState(false)
   const [ books, setBooks ] = useState([])
 
+  const [ query, setQuery ] = useState({
+    search: '',
+    page: 0
+  })
+
+  const handleChangeSearch = useCallback(( newValue ) => {
+    setQuery({
+      search: newValue,
+      page: 0
+    })
+  }, [])
+
   const handleGetBooks = useCallback(async () => {
+    if (!query.search) {
+      setBooks([])
+      return
+    }
+    
+    setLoading(true)
+
     try {
-      const { items } = await getBooks(search)
-      setBooks(items)
+      const { items } = await getBooks(query)
+      setBooks(b => {
+        console.log({ b, items })
+        return query.page > 0 ? [ ...b, ...items ] : items
+      })
     } catch (e) {
       setBooks([])
+    } finally {
+      setLoading(false)
     }
-  }, [search])
+  }, [query])
 
   useEffect(() => {
     handleGetBooks()
@@ -35,12 +65,20 @@ export default function HomePage() {
     <Page>
       <Content>
         <SearchInput
-          value={search}
-          onValue={setSearch}
+          value={query.search}
+          onValue={handleChangeSearch}
+          timeout={500}
         />
 
         <BooksList books={books} />
 
+        {books.length > 0 &&
+          <LoadButton
+            onClick={() => setQuery(q => ({ ...q, page: q.page + 1}))}
+          >
+            Load more
+          </LoadButton>
+        }
       </Content>
       <Footer/>
     </Page>

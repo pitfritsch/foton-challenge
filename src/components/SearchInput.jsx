@@ -38,15 +38,15 @@ const StyledInput = styled.input`
   }
 `
 
-export default function SearchInput({ value, onValue }) {
+export default function SearchInput({ value, onValue, onEnter, timeout=250, ...rest }) {
   
   const [ insideValue, setInsideValue ] = useState(value)
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       onValue?.(insideValue)
-    }, [250])
-    return () => clearTimeout(timeout)
+    }, [timeout])
+    return () => clearTimeout(timeoutId)
   }, [insideValue, onValue])
 
   const handleChange = (e) => {
@@ -59,6 +59,8 @@ export default function SearchInput({ value, onValue }) {
         placeholder="Search book"
         value={insideValue}
         onChange={handleChange}
+        onKeyDown={(e) => e.keyCode === 13 && onEnter?.()}
+        {...rest}
       />
       <Icon>
         <VscSearch/>
