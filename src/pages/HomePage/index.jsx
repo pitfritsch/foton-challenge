@@ -11,7 +11,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 20px 20px 80px 20px;
+  padding: 40px 20px 80px 20px;
 `
 
 export default function HomePage() {

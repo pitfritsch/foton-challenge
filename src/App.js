@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import NotFound from './pages/404';
-import Details from './pages/Details';
+import Details from './pages/DetailsPage';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 
