@@ -32,10 +32,8 @@ const Circle = styled.div`
 
 `
 
-export default function Loading({ loading=false, ...rest }) {
+export default function Loading({ ...rest }) {
   return (
-    <Circle {...rest}>
-      
-    </Circle>
+    <Circle {...rest}/>
   )
 }

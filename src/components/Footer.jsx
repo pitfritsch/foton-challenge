@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FiBook, FiHome, FiUser } from "react-icons/fi";
+import { Link } from 'react-router-dom';
 
 const StyledFooter = styled.footer`
   position: fixed;
@@ -45,10 +46,12 @@ const FooterItem = styled.div`
 export default function Footer() {
   return (
     <StyledFooter>
-      <FooterItem selected>
-        <FiHome/>
-        <p>Home</p>
-      </FooterItem>
+      <Link to='/'>
+        <FooterItem selected>
+          <FiHome/>
+          <p>Home</p>
+        </FooterItem>
+      </Link>
       <FooterItem>
         <FiBook/>
         <p>Libraries</p>

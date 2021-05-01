@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { useHistory } from 'react-router'
 import styled, { css } from 'styled-components'
 import notFound from '../../images/not_found.jpg'
 
@@ -51,9 +52,14 @@ const Author = styled.p`
 `
 
 export default function BookCard({ book, ...rest }) {
+  const history = useHistory()
+
+  const handleSelectBook = useCallback(() => {
+    history.push(`/book/${book.id}`)
+  }, [history, book])
 
   return (
-    <div>
+    <div onClick={handleSelectBook}>
       <ImageContainer src={book?.volumeInfo?.imageLinks?.thumbnail}/>
       <Title>
         {book?.volumeInfo?.title}
