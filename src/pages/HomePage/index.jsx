@@ -42,6 +42,7 @@ export default function HomePage() {
   })
 
   const handleChangeSearch = useCallback(( newValue ) => {
+    setBooks([])
     setQuery({
       search: newValue,
       page: 0
