@@ -47,7 +47,7 @@ export default function SearchInput({ value, onValue, onEnter, timeout=250, ...r
       onValue?.(insideValue)
     }, [timeout])
     return () => clearTimeout(timeoutId)
-  }, [insideValue, onValue])
+  }, [insideValue, onValue, timeout])
 
   const handleChange = (e) => {
     setInsideValue(e.target.value)
