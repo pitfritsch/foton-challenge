@@ -1,11 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
-import styled, { css } from 'styled-components'
-import { getBook } from '../../services/books'
+import React, { useCallback, useEffect, useState } from 'react';
 import { FiArrowLeft } from "react-icons/fi";
-import notFound from '../../images/not_found.jpg'
-import Loading from '../../components/Loading';
+import { useHistory, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 import DetailsHeader from '../../components/DetailsHeader';
+import Loading from '../../components/Loading';
+import { getBook } from '../../services/books';
 
 
 const Container = styled.div`
@@ -45,7 +44,20 @@ const Image = styled.img`
 const Title = styled.h1`
   font-size: 24px;
   font-weight: 400;
+  margin: 0px;
   margin-top: 30px;
+`
+
+const Author = styled.span`
+  color: rgba(255, 105, 120, 1);
+  font-size: 16px;
+  margin: 10px 0;
+  font-weight: 600;
+`
+const Description = styled.div`
+  color: #32313199;
+  font-size: 14px;
+  line-height: 25px;
 `
 
 export default function Details() {
@@ -91,7 +103,8 @@ export default function Details() {
       <Title>
         <b>{book?.volumeInfo?.title}</b>{book?.volumeInfo?.subtitle ? ` : ${book?.volumeInfo?.subtitle}`  : ''}
       </Title>
-      {bookId}
+      <Author>{book?.volumeInfo?.authors?.[0]}</Author>
+      <Description dangerouslySetInnerHTML={{ __html: book?.volumeInfo?.description }}/>
     </Container>
   </>)
 }
