@@ -3,12 +3,13 @@ import { FiArrowLeft } from "react-icons/fi";
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import DetailsHeader from '../../components/DetailsHeader';
+import DetailsFooter from '../../components/DetailsFooter';
 import Loading from '../../components/Loading';
 import { getBook } from '../../services/books';
 
 
 const Container = styled.div`
-  padding: 50px 20px;
+  padding: 50px 20px 100px 20px;
   display: flex;
   flex-direction: column;
 `
@@ -55,9 +56,9 @@ const Author = styled.span`
   font-weight: 600;
 `
 const Description = styled.div`
-  color: #32313199;
   font-size: 14px;
   line-height: 25px;
+  color: rgba(49, 49, 49, 0.6);
 `
 
 export default function Details() {
@@ -106,5 +107,6 @@ export default function Details() {
       <Author>{book?.volumeInfo?.authors?.[0]}</Author>
       <Description dangerouslySetInnerHTML={{ __html: book?.volumeInfo?.description }}/>
     </Container>
+    <DetailsFooter />
   </>)
 }
