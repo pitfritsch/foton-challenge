@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6c29f938-d079-4232-bcc8-020f65e9a754/deploy-status)](https://app.netlify.com/sites/foton-pedro-fritsch/deploys)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
