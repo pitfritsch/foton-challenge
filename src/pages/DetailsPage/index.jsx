@@ -9,7 +9,7 @@ import { getBook } from '../../services/books';
 
 
 const Container = styled.div`
-  padding: 50px 20px 100px 20px;
+  padding: 50px 20px 120px 20px;
   display: flex;
   flex-direction: column;
 `
