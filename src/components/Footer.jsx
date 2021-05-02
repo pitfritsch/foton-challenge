@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FiBook, FiHome, FiUser } from "react-icons/fi";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const StyledFooter = styled.footer`
   position: fixed;
@@ -43,15 +43,22 @@ const FooterItem = styled.div`
   }
 `
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`
+
 export default function Footer() {
+
+  const history = useHistory()
+
   return (
     <StyledFooter>
-      <Link to='/'>
-        <FooterItem selected>
+      <StyledLink to='/'>
+        <FooterItem selected={history.location.pathname === '/'}>
           <FiHome/>
           <p>Home</p>
         </FooterItem>
-      </Link>
+      </StyledLink>
       <FooterItem>
         <FiBook/>
         <p>Libraries</p>
