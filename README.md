@@ -6,11 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## How can I run this project?
 
-First of all, you have to install all dependencies, to do that, you must run `yarn` or `npm install`
+First of all, you have to install all dependencies, to do that, you must run `yarn`
 
 After that, to run the project in dev mode, you can run:
 
-### `yarn start` or `npm run start`
+### `yarn start`
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
