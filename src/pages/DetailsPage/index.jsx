@@ -6,6 +6,7 @@ import DetailsHeader from '../../components/DetailsHeader';
 import DetailsFooter from '../../components/DetailsFooter';
 import Loading from '../../components/Loading';
 import { getBook } from '../../services/books';
+import { useBook } from '../../hooks/useBook';
 
 
 const Container = styled.div`
@@ -64,25 +65,12 @@ const Description = styled.div`
 export default function Details() {
   const { bookId } = useParams()
   const history = useHistory()
-  const [ book, setBook ] = useState({})
+  const book = useBook(bookId)
 
   const handleGoBack = useCallback(() => {
     history.goBack()
   }, [ history ])
-
-  const handleGetBook = useCallback(async () => {
-    try {
-      const resp = await getBook(bookId)
-      console.log(resp)
-      setBook(resp)
-    } catch (error) {
-      console.error(error)
-    }
-  }, [bookId])
-
-  useEffect(() => {
-    handleGetBook()
-  }, [handleGetBook])
+  
 
   return (<>
     <DetailsHeader />

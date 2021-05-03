@@ -4,6 +4,7 @@ import { getBook } from '../../services/books'
 import notFound from '../../images/not_found.jpg'
 import StatsIcon from '../../icons/StatsIcon'
 import { useHistory } from 'react-router'
+import { useBook } from '../../hooks/useBook'
 
 const Container = styled.div`
   min-height: 99px;
@@ -77,20 +78,7 @@ const ReadingInfo = styled.div`
 export default function DiscoverBookCard({ bookId }) {
   const history = useHistory()
 
-  const [ book, setBook ] = useState({})
-  const handleGetBook = useCallback(async () => {
-    try {
-      const resp = await getBook(bookId)
-      console.log(resp)
-      setBook(resp)
-    } catch (error) {
-      console.error(error)
-    }
-  }, [bookId])
-
-  useEffect(() => {
-    handleGetBook()
-  }, [handleGetBook])
+  const book = useBook(bookId)
   
   return (
     <Container onClick={() => history.push(`/book/${book.id}`)}>

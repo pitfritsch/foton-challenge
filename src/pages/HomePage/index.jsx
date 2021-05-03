@@ -92,7 +92,7 @@ export default function HomePage() {
         <Title>
           {'Hi, '}
           <Name>
-            Pedro Fritsch
+          Mehmed Al Fatih
           </Name>
           {' 👋'}
         </Title>
