@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
+import CurrentlyReadingBook from '../../components/books/CurrentlyReadingBook'
 import DiscoverBookCard from '../../components/books/DiscoverBookCard'
 import Footer from '../../components/Footer'
 import SearchInput from '../../components/SearchInput'
@@ -116,11 +117,10 @@ export default function HomePage() {
           <Subtitle>Currently Reading</Subtitle>
           <More>All</More>
         </Flex>
-        <Flex justify='space-between' align='center'>
-            <DiscoverBookCard bookId={currentlyReading} />
-        </Flex>
+        <br/>
+        <CurrentlyReadingBook bookId={currentlyReading} />
 
-
+        {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/vBzBgewl4ac?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
       </Content>
       <Footer/>
     </>

@@ -54,7 +54,7 @@ export default function SearchInput({ value, onValue, onEnter, timeout=250, auto
     if(autoFocus) {
       searchInputRef.current.focus()
     }
-  }, [autoFocus, searchInputRef.current])
+  }, [autoFocus])
 
   const handleChange = (e) => {
     setInsideValue(e.target.value)
