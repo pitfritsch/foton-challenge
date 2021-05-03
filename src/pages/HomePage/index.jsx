@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import CurrentlyReadingBook from '../../components/books/CurrentlyReadingBook'
 import DiscoverBookCard from '../../components/books/DiscoverBookCard'
 import Footer from '../../components/Footer'
+import ReviewVideo from '../../components/ReviewVideo'
 import SearchInput from '../../components/SearchInput'
 
 const books = [
@@ -120,7 +121,14 @@ export default function HomePage() {
         <br/>
         <CurrentlyReadingBook bookId={currentlyReading} />
 
-        {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/vBzBgewl4ac?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+        <br/>
+        <br/>
+        <Flex justify='space-between' align='center'>
+          <Subtitle>Reviews of The Days</Subtitle>
+          <More>All Video</More>
+        </Flex>
+        <br/>
+        <ReviewVideo videoId='vBzBgewl4ac'/>
       </Content>
       <Footer/>
     </>
