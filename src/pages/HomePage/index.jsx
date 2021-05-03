@@ -119,7 +119,7 @@ export default function HomePage() {
           <More>All</More>
         </Flex>
         <br/>
-        <CurrentlyReadingBook bookId={currentlyReading} />
+        <CurrentlyReadingBook bookId={currentlyReading || 'eLRhDgAAQBAJ'} />
 
         <br/>
         <br/>

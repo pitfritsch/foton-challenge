@@ -14,6 +14,8 @@ const Container = styled.div`
 
   display: flex;
   justify-content: space-evenly;
+
+  z-index: 10;
 `
 const Item = styled.div`
   display: flex;

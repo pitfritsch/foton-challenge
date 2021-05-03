@@ -12,6 +12,8 @@ const StyledFooter = styled.footer`
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  
+  z-index: 10;
 `
 
 const FooterItem = styled.div`

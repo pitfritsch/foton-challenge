@@ -11,6 +11,8 @@ const Content = styled.div`
   height: 100%;
   position: absolute;
   top: 0;
+  border-radius: 5px;
+  overflow: hidden;
 `
 
 export default function ReviewVideo({ videoId }) {

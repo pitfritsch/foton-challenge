@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router'
 import styled, { css } from 'styled-components'
 import { useBook } from '../../hooks/useBook'
 import ChapterIcon from '../../icons/ChapterIcon'
@@ -97,9 +98,10 @@ const ColorRed = styled.span`
 `
 
 export default function CurrentlyReadingBook({ bookId }) {
+  const history = useHistory()
   const book = useBook(bookId)
   return (
-    <Container>
+    <Container onClick={() => history.push(`/book/${book.id}`)}>
       <ImageContainer src={book?.volumeInfo?.imageLinks?.thumbnail}/>
       <ColoredContainer>
         <Flex direction='column' height='100%' justify='space-between'>
