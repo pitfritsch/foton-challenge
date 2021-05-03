@@ -81,6 +81,7 @@ export default function SearchPage() {
           value={search}
           onValue={handleChangeSearch}
           timeout={500}
+          autoFocus
         />
         {/* <h1>{query.search}</h1>
         <h2>{query.page}</h2> */}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { FiBookOpen, FiHeadphones, FiShare } from 'react-icons/fi'
 import styled from 'styled-components'
 
@@ -22,11 +22,16 @@ const Item = styled.div`
   grid-gap: 10px;
   font-size: 18px;
   color: rgba(207, 203, 210, 1);
+  transition: .2s;
 
   span {
     font-size: 14px;
     font-weight: 700;
     color: rgba(63, 64, 67, 1);
+  }
+
+  :active {
+    transform: scale(.9)
   }
 `
 const Vr = styled.hr`
@@ -36,10 +41,15 @@ const Vr = styled.hr`
   border-right: 1px solid rgba(151, 151, 151, 0.2);
 `
 
-export default function DetailsFooter() {
+export default function DetailsFooter({bookId}) {
+  
+  const startReading = useCallback(() => {
+    localStorage.setItem('currently_reading', bookId)
+  }, [bookId])
+
   return (
     <Container>
-      <Item>
+      <Item onClick={startReading}>
         <FiBookOpen/>
         <span>
           Read

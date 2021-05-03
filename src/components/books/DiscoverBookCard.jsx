@@ -1,10 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import styled, { css } from 'styled-components'
-import { getBook } from '../../services/books'
-import notFound from '../../images/not_found.jpg'
-import StatsIcon from '../../icons/StatsIcon'
+import React from 'react'
 import { useHistory } from 'react-router'
+import styled, { css } from 'styled-components'
 import { useBook } from '../../hooks/useBook'
+import StatsIcon from '../../icons/StatsIcon'
+import notFound from '../../images/not_found.jpg'
 
 const Container = styled.div`
   min-height: 99px;
@@ -79,7 +78,6 @@ export default function DiscoverBookCard({ bookId }) {
   const history = useHistory()
 
   const book = useBook(bookId)
-  
   return (
     <Container onClick={() => history.push(`/book/${book.id}`)}>
       <InfoContainer>

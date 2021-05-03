@@ -80,6 +80,8 @@ export default function HomePage() {
     redirectTo()
   }, [redirectTo])
 
+  const currentlyReading = localStorage.getItem('currently_reading')
+
   return (
     <>
       <Content>
@@ -103,8 +105,8 @@ export default function HomePage() {
         </Flex>
         <br/>
         <DiscoverBookContainer>
-          {books.map(book => 
-            <DiscoverBookCard bookId={book} />
+          {books.map(bookId => 
+            <DiscoverBookCard key={bookId} bookId={bookId} />
           )}
         </DiscoverBookContainer>
 
@@ -113,6 +115,9 @@ export default function HomePage() {
         <Flex justify='space-between' align='center'>
           <Subtitle>Currently Reading</Subtitle>
           <More>All</More>
+        </Flex>
+        <Flex justify='space-between' align='center'>
+            <DiscoverBookCard bookId={currentlyReading} />
         </Flex>
 
 

@@ -70,7 +70,6 @@ export default function Details() {
   const handleGoBack = useCallback(() => {
     history.goBack()
   }, [ history ])
-  
 
   return (<>
     <DetailsHeader />
@@ -95,6 +94,6 @@ export default function Details() {
       <Author>{book?.volumeInfo?.authors?.[0]}</Author>
       <Description dangerouslySetInnerHTML={{ __html: book?.volumeInfo?.description }}/>
     </Container>
-    <DetailsFooter />
+    <DetailsFooter bookId={bookId} />
   </>)
 }

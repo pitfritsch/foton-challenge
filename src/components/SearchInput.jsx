@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { VscSearch } from 'react-icons/vsc'
 import styled from 'styled-components'
 
@@ -38,9 +38,10 @@ const StyledInput = styled.input`
   }
 `
 
-export default function SearchInput({ value, onValue, onEnter, timeout=250, ...rest }) {
+export default function SearchInput({ value, onValue, onEnter, timeout=250, autoFocus, ...rest }) {
   
   const [ insideValue, setInsideValue ] = useState(value)
+  const searchInputRef = useRef()
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -48,6 +49,12 @@ export default function SearchInput({ value, onValue, onEnter, timeout=250, ...r
     }, [timeout])
     return () => clearTimeout(timeoutId)
   }, [insideValue, onValue, timeout])
+
+  useLayoutEffect(() => {
+    if(autoFocus) {
+      searchInputRef.current.focus()
+    }
+  }, [autoFocus, searchInputRef.current])
 
   const handleChange = (e) => {
     setInsideValue(e.target.value)
@@ -60,6 +67,8 @@ export default function SearchInput({ value, onValue, onEnter, timeout=250, ...r
         value={insideValue}
         onChange={handleChange}
         onKeyDown={(e) => e.keyCode === 13 && onEnter?.()}
+        id='search_input'
+        ref={searchInputRef}
         {...rest}
       />
       <Icon>
