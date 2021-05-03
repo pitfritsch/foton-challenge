@@ -1,11 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 import { FiArrowLeft } from "react-icons/fi";
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import DetailsHeader from '../../components/DetailsHeader';
 import DetailsFooter from '../../components/DetailsFooter';
+import DetailsHeader from '../../components/DetailsHeader';
 import Loading from '../../components/Loading';
-import { getBook } from '../../services/books';
 import { useBook } from '../../hooks/useBook';
 
 

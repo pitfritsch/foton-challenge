@@ -22,7 +22,7 @@ export default function ReviewVideo({ videoId }) {
           height="100%"
           src={`https://www.youtube.com/embed/${videoId}?controls=0`}
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="
             accelerometer; 
             autoplay; 
@@ -31,7 +31,7 @@ export default function ReviewVideo({ videoId }) {
             gyroscope; 
             picture-in-picture
           " 
-          allowfullscreen
+          allowFullScreen
         />
       </Content>
     </Container>
